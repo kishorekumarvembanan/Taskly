@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Login.css */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Light gray background */
+    text-align: center; /* Center text */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333; /* Darker text color */
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #666; /* Gray text color */
+    max-width: 600px; /* Limit text width */
+  }
+  
+  .google-button {
+    padding: 12px 25px;
+    border: none;
+    background-color: #4285f4; /* Google blue */
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .google-button:hover {
+    background-color: #1c6be9; /* Darker blue on hover */
+  }
+  
+  .footer-text {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #555; /* Slightly darker gray */
+    max-width: 500px;
+    text-align: center;
+  }
+  

@@ -1,0 +1,67 @@
+.task-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line if there's not enough space */
+    gap: 20px; /* Space between task items */
+    margin-top: 20px;
+  }
+  
+  .task-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: 300px; /* Adjust the width of each task item */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align content horizontally */
+  }
+  
+  .task-item h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .task-item p {
+    margin: 5px 0 0;
+    color: #555;
+  }
+  
+  .task-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .task-button {
+    background-color: #4c51bf; /* Indigo background */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+  }
+  
+  .task-button:hover {
+    background-color: #3ec356; /* Darker shade on hover */
+  }
+  
+  .task-button.completed {
+    background-color: #38a169; /* Green background for completed */
+  }
+  
+  .task-button.completed:hover {
+    background-color: #2f855a; /* Darker green on hover */
+  }
+  
+  .task-button.delete {
+    background-color: #e53e3e; /* Red background for delete */
+  }
+  
+  .task-button.delete:hover {
+    background-color: #c53030; /* Darker red on hover */
+  }
+  
