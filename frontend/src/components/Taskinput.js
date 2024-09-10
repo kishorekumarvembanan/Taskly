@@ -4,14 +4,14 @@ import '../css/taskinput.css';
 const TaskInput = ({ addTask }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [title, setTitle] = useState('');
-  const [context, setContext] = useState('');
+  const [content, setContent] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (title && context) {
-      await addTask({ title, context });
+    if (title && content) {
+      await addTask({ title, content });
       setTitle('');
-      setContext('');
+      setContent('');
       setIsVisible(false);
     }
   };
@@ -28,21 +28,20 @@ const TaskInput = ({ addTask }) => {
             required
           />
           <textarea
-            placeholder="Task Context"
-            value={context}
-            onChange={(e) => setContext(e.target.value)}
+            placeholder="Task Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             required
           />
           <button type="submit">Add Task</button>
           <button type="button" onClick={() => setIsVisible(false)}>Cancel</button>
         </form>
       ) : (
-        <button className="add-task-button" onClick={() => setIsVisible(true)}>
-          +
-        </button>
+        <button className="add-task-button" onClick={() => setIsVisible(true)}>+</button>
       )}
     </div>
   );
 };
+
 
 export default TaskInput;

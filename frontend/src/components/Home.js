@@ -12,29 +12,51 @@ const Home = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    console.log('User:', user); // Check if user object is available
+    if (user) {
+      fetchTasks();
+    }
+  }, [user]); // Dependency array includes 'user'
 
   const fetchTasks = async () => {
     try {
-      const response = await getTasks();
-      setTasks(response.data);
+      console.log('Fetching tasks for user ID:', user._id); // Debug log
+      if (user._id) {
+        const response = await getTasks(user._id);
+        setTasks(response.data);
+      } else {
+        console.error('User ID is missing.');
+      }
     } catch (error) {
-      console.error('Error fetching tasks:', error);
+      console.error('Error fetching tasks:', error.message);
     }
   };
+  
+  
 
   const handleAddTask = async (task) => {
     try {
-      const response = await createTask(task);
-      console.log('Task added:', response.data); // Log task data
+      if (!user?._id) {
+        throw new Error('User ID is missing.');
+      }
+  
+      const taskData = {
+        title: task.title,
+        content: task.content,
+        userId: user._id // Make sure this is correctly assigned
+      };
+  
+      console.log('Task Data:', taskData); // Check task data before sending
+  
+      const response = await createTask(taskData);
       setTasks([...tasks, response.data]);
     } catch (error) {
-      console.error('Error adding task:', error.response ? error.response.data : error.message);
+      console.error('Error adding task:', error.message);
     }
   };
   
   
+
 
   const handleUpdateTask = async (id, updatedData) => {
     try {
