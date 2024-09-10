@@ -27,11 +27,14 @@ const Home = () => {
   const handleAddTask = async (task) => {
     try {
       const response = await createTask(task);
+      console.log('Task added:', response.data); // Log task data
       setTasks([...tasks, response.data]);
     } catch (error) {
-      console.error('Error adding task:', error);
+      console.error('Error adding task:', error.response ? error.response.data : error.message);
     }
   };
+  
+  
 
   const handleUpdateTask = async (id, updatedData) => {
     try {
@@ -52,8 +55,6 @@ const Home = () => {
   };
 
   const handleSignOut = () => {
-    // Add your sign-out logic here. For example, clearing tokens or user session.
-    // Redirecting to login page as an example.
     navigate('/');
   };
 

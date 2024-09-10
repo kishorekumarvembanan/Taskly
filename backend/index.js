@@ -2,13 +2,13 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 
 // Middleware
 app.use(express.json());
+const cors = require('cors');
 app.use(cors());
 
 // Connect to MongoDB
@@ -18,9 +18,11 @@ mongoose.connect(process.env.MONGO_URI, )
 
 // Import routes
 const taskRoutes = require('./src/routes/taskRoute');
+const userRoutes = require('./src/routes/userRoutes');
 
 // Use routes
 app.use('/api', taskRoutes);
+app.use('/api', userRoutes);
 
 // Root route (for testing)
 app.get('/', (req, res) => {

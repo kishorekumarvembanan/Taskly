@@ -1,16 +1,30 @@
 import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";  // Fix typo (import jwtDecode correctly)
+import axios from 'axios';  // Import axios to send the request
 import '../css/login.css';
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleSuccess = (response) => {
+  const handleSuccess = async (response) => {
     const decoded = jwtDecode(response.credential);
     console.log('Login Success:', decoded);
-    navigate('/home', { state: { user: decoded } });  
+
+    try {
+      // Send the user information to the backend
+      await axios.post('http://localhost:5000/api/login', {
+        googleId: decoded.sub, // Google ID from the decoded token
+        name: decoded.name,
+        email: decoded.email,
+      });
+
+      // After successful login and saving to the database, navigate to the home page
+      navigate('/home', { state: { user: decoded } });
+    } catch (error) {
+      console.error('Error saving user to the database:', error);
+    }
   };
 
   const handleError = (error) => {
