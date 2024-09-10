@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../css/taskinput.css';
+import { FaTrashAlt } from 'react-icons/fa';
+import Modal from './Modal'; // Import the modal component
+
 
 const TaskInput = ({ addTask }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,7 +21,9 @@ const TaskInput = ({ addTask }) => {
 
   return (
     <div className="task-input-container">
-      {isVisible ? (
+      <button className="add-task-button" onClick={() => setIsVisible(true)}>+ Add Task</button>
+      
+      <Modal isOpen={isVisible} onClose={() => setIsVisible(false)}>
         <form className="task-form" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -33,12 +38,14 @@ const TaskInput = ({ addTask }) => {
             onChange={(e) => setContent(e.target.value)}
             required
           />
-          <button type="submit">Add Task</button>
-          <button type="button" onClick={() => setIsVisible(false)}>Cancel</button>
+          <div className="form-buttons">
+            <button type="submit" className="submit-button">Add Task</button>
+            <button type="button" className="cancel-button" onClick={() => setIsVisible(false)}>
+              <FaTrashAlt /> {/* Bin icon */}
+            </button>
+          </div>
         </form>
-      ) : (
-        <button className="add-task-button" onClick={() => setIsVisible(true)}>+</button>
-      )}
+      </Modal>
     </div>
   );
 };

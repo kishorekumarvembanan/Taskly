@@ -23,6 +23,12 @@ const Login = () => {
       });
   
       console.log('Backend Response:', data); // Log backend response
+      console.log('User Data:', {
+        googleId: data.googleId,
+        name: data.name,
+        email: data.email,
+        picture: data.picture, // Ensure this field is present
+      });
       navigate('/home', { state: { user: data } });
     } catch (error) {
       console.error('Error saving user to the database:', error);
@@ -36,19 +42,23 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h1>Create Your Daily Tasks with Taskly</h1>
-      <p><b>Stay organized</b> and boost your <b>productivity</b> with our easy-to-use task manager.</p>
-      <p>Sign in to get started and manage your tasks efficiently.</p>
-      <GoogleLogin
-        onSuccess={handleSuccess}
-        onError={handleError}
-        text="Sign in with Google"
-        className="google-button"
-      />
-      <p className="footer-text">
-        <i>"Success is the sum of small efforts, repeated day in and day out." – Robert Collier</i>
-      </p>
-    </div>
+  <div className="overlay"></div> {/* Misty overlay */}
+  <div className="content-wrapper">
+    <h1>Create Your Daily Tasks with Taskly</h1>
+    <p><b>Stay organized</b> and boost your <b>productivity</b> with our easy-to-use task manager.</p>
+    <p>Sign in to get started and manage your tasks efficiently.</p>
+    <GoogleLogin
+      onSuccess={handleSuccess}
+      onError={handleError}
+      text="Sign in with Google"
+      className="google-button"
+    />
+    <p className="footer-text">
+      <i>"Success is the sum of small efforts, repeated day in and day out." – Robert Collier</i>
+    </p>
+  </div>
+</div>
+
   );
 };
 

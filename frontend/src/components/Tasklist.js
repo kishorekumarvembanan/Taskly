@@ -1,5 +1,6 @@
 import React from 'react';
-import '../css/tasklist.css'; // Ensure your CSS file is included
+import { FaTrashAlt } from 'react-icons/fa'; // Import bin icon
+import '../css/tasklist.css';
 
 const TaskList = ({ tasks, updateTask, deleteTask }) => {
   return (
@@ -7,7 +8,7 @@ const TaskList = ({ tasks, updateTask, deleteTask }) => {
       {tasks.map((task) => (
         <div key={task._id} className="task-item">
           <h3>{task.title}</h3>
-          <p>{task.content}</p> {/* Make sure to use `task.content` to display the content */}
+          <p>{task.content}</p>
           <div className="task-actions">
             <button
               className={`task-button ${task.isComplete ? 'completed' : 'incomplete'}`}
@@ -19,7 +20,7 @@ const TaskList = ({ tasks, updateTask, deleteTask }) => {
               className="task-button delete"
               onClick={() => deleteTask(task._id)}
             >
-              Delete
+              <FaTrashAlt /> {/* Bin icon */}
             </button>
           </div>
         </div>

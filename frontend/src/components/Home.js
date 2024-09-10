@@ -4,6 +4,7 @@ import TaskList from './Tasklist';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getTasks, createTask, updateTask, deleteTask } from './api';
 import '../css/home.css';
+import profilepic from '../assets/profile.png';
 
 const Home = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const Home = () => {
   const [tasks, setTasks] = useState([]);
 
   console.log('User in Home:', user);
+  console.log('User Picture URL:', user?.picture);
 
   useEffect(() => {
     console.log('User:', user); // Check if user object is available
@@ -85,12 +87,17 @@ const Home = () => {
   return (
     <div className="home-container">
       <aside className="sidebar">
-        <img src={user?.picture} alt="User profile" className="user-image" />
+        <img 
+          src= {user?.picture || profilepic}
+          alt="User profile" 
+          className="user-image" 
+        />
         <h2 className="user-name">{user?.name}</h2>
         <button className="sign-out-button" onClick={handleSignOut}>
           Sign Out
         </button>
       </aside>
+
 
       <section className="main-content">
         <h1>Welcome to Taskly</h1>

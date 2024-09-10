@@ -1,36 +1,37 @@
 .task-list {
     display: flex;
     flex-wrap: wrap; /* Allows wrapping to the next line if there's not enough space */
-    gap: 20px; /* Space between task items */
+    gap: 30px; /* Space between task items */
     margin-top: 20px;
   }
   
   .task-item {
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 15px;
     width: 300px; /* Adjust the width of each task item */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align content horizontally */
+    align-items: left;; /* Center align content horizontally */
   }
   
   .task-item h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .task-item p {
     margin: 5px 0 0;
-    color: #555;
+    color: #413e3e;
   }
+
   
   .task-actions {
     display: flex;
-    gap: 10px;
+    gap: 120px;
     margin-top: 10px;
   }
   

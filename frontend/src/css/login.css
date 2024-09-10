@@ -3,32 +3,58 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
 }
 
 /* Login.css */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Full viewport height */
-    background-color: #f0f0f0; /* Light gray background */
-    text-align: center; /* Center text */
-    padding: 20px;
-    box-sizing: border-box;
-  }
+  height: 100vh;  /* Full viewport height */
+  box-sizing: border-box;
+  background-image: url('../assets/image1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* White overlay with 30% transparency */
+  z-index: 1;  /* Places it above the background but below the content */
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;  /* Places content above the overlay */
+  text-align: center;
+  max-width: 800px;
+  margin-top: 150px;
+  text-align: center;
+  justify-content: center;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     margin-bottom: 20px;
-    color: #333; /* Darker text color */
+    color: #171313; /* Darker text color */
   }
   
   p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
-    color: #666; /* Gray text color */
+    color: #2a2727; /* Gray text color */
     max-width: 600px; /* Limit text width */
+    font-weight: 500;
   }
   
   .google-button {
@@ -43,13 +69,13 @@
   }
   
   .google-button:hover {
-    background-color: #1c6be9; /* Darker blue on hover */
+  background-color: #1c6be9;  /* Darker blue on hover */
   }
   
   .footer-text {
     margin-top: 20px;
     font-size: 1rem;
-    color: #555; /* Slightly darker gray */
+    color: #141313; /* Slightly darker gray */
     max-width: 500px;
     text-align: center;
   }
