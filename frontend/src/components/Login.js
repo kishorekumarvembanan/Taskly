@@ -9,23 +9,26 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSuccess = async (response) => {
-    const decoded = jwtDecode(response.credential);
-    console.log('Login Success:', decoded);
-
+    console.log('Login Response:', response); // Log response to see its structure
+  
     try {
-      // Send the user information to the backend
-      await axios.post('http://localhost:5000/api/login', {
-        googleId: decoded.sub, // Google ID from the decoded token
+      const decoded = jwtDecode(response.credential);
+      console.log('Decoded:', decoded); // Log decoded token to ensure it contains expected fields
+  
+      // Proceed with sending the data to the backend
+      const { data } = await axios.post('http://localhost:5000/api/login', {
+        googleId: decoded.sub, // Ensure 'sub' is correct
         name: decoded.name,
         email: decoded.email,
       });
-
-      // After successful login and saving to the database, navigate to the home page
-      navigate('/home', { state: { user: decoded } });
+  
+      console.log('Backend Response:', data); // Log backend response
+      navigate('/home', { state: { user: data } });
     } catch (error) {
       console.error('Error saving user to the database:', error);
     }
   };
+  
 
   const handleError = (error) => {
     console.error('Login Failed:', error);

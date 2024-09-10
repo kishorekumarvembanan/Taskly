@@ -11,6 +11,8 @@ const Home = () => {
   const user = location.state?.user;
   const [tasks, setTasks] = useState([]);
 
+  console.log('User in Home:', user);
+
   useEffect(() => {
     console.log('User:', user); // Check if user object is available
     if (user) {
