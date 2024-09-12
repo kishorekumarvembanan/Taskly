@@ -1,11 +1,11 @@
 import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa'; // Import bin icon
+import { FaTrashAlt } from 'react-icons/fa'; 
 import '../css/tasklist.css';
 
 const TaskList = ({ tasks, updateTask, deleteTask }) => {
   return (
     <div className="task-list">
-      {tasks.map((task) => (
+      {tasks.slice().reverse().map((task) => (
         <div key={task._id} className="task-item">
           <h3>{task.title}</h3>
           <p>{task.content}</p>
@@ -20,7 +20,7 @@ const TaskList = ({ tasks, updateTask, deleteTask }) => {
               className="task-button delete"
               onClick={() => deleteTask(task._id)}
             >
-              <FaTrashAlt /> {/* Bin icon */}
+              <FaTrashAlt /> 
             </button>
           </div>
         </div>
@@ -28,5 +28,6 @@ const TaskList = ({ tasks, updateTask, deleteTask }) => {
     </div>
   );
 };
+
 
 export default TaskList;

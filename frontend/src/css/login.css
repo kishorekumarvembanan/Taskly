@@ -8,9 +8,9 @@
 
 /* Login.css */
 .login-container {
-  height: 100vh;  /* Full viewport height */
+  height: 100vh; 
   box-sizing: border-box;
-  background-image: url('../assets/image1.jpg');
+  background-image: url('../assets/image5.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -25,13 +25,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* White overlay with 30% transparency */
-  z-index: 1;  /* Places it above the background but below the content */
+  background-color: rgba(255, 255, 255, 0.2); 
+  z-index: 1;
 }
 
 .content-wrapper {
   position: relative;
-  z-index: 2;  /* Places content above the overlay */
+  z-index: 2;
   text-align: center;
   max-width: 800px;
   margin-top: 150px;
@@ -46,21 +46,21 @@
   h1 {
     font-size: 2.7rem;
     margin-bottom: 20px;
-    color: #171313; /* Darker text color */
+    color: #3d3535;
   }
   
   p {
     font-size: 1.3rem;
     margin-bottom: 20px;
-    color: #2a2727; /* Gray text color */
-    max-width: 600px; /* Limit text width */
+    color: #fdfbfb;
+    max-width: 600px; 
     font-weight: 500;
   }
   
   .google-button {
     padding: 12px 25px;
     border: none;
-    background-color: #4285f4; /* Google blue */
+    background-color: #4285f4;
     color: white;
     font-size: 1.2rem;
     border-radius: 5px;
@@ -69,13 +69,13 @@
   }
   
   .google-button:hover {
-  background-color: #1c6be9;  /* Darker blue on hover */
+  background-color: #1c6be9;
   }
   
   .footer-text {
     margin-top: 20px;
     font-size: 1rem;
-    color: #141313; /* Slightly darker gray */
+    color: #f1e8e8;
     max-width: 500px;
     text-align: center;
   }

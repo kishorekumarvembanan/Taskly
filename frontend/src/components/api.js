@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api'; // Ensure this is your backend URL
 
-// API calls
 export const getTasks = async (userId) => {
   try {
     // Use the correct API URL and ensure userId is included
@@ -10,7 +9,7 @@ export const getTasks = async (userId) => {
     return response;
   } catch (error) {
     console.error('Error fetching tasks:', error.message);
-    throw error; // Re-throw error to be caught in component
+    throw error; 
   }
 };
 

@@ -1,9 +1,10 @@
 const express = require('express');
 const Task = require('../models/task');
-const User = require('../models/user'); // Make sure you import the User model
+const User = require('../models/user');
 
 const router = express.Router();
 
+//creating a new task
 router.post('/tasks', async (req, res) => {
   try {
     const { title, content, userId } = req.body;
@@ -23,7 +24,7 @@ router.post('/tasks', async (req, res) => {
 
     res.status(201).json(newTask);
   } catch (err) {
-    console.error('Backend error:', err.message); // Log the error
+    console.error('Backend error:', err.message); 
     res.status(500).json({ error: err.message });
   }
 });

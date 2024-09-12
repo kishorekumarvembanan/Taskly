@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../css/taskinput.css';
 import { FaTrashAlt } from 'react-icons/fa';
-import Modal from './Modal'; // Import the modal component
+import Modal from './Modal';
 
 
 const TaskInput = ({ addTask }) => {
@@ -41,7 +41,7 @@ const TaskInput = ({ addTask }) => {
           <div className="form-buttons">
             <button type="submit" className="submit-button">Add Task</button>
             <button type="button" className="cancel-button" onClick={() => setIsVisible(false)}>
-              <FaTrashAlt /> {/* Bin icon */}
+              <FaTrashAlt /> 
             </button>
           </div>
         </form>

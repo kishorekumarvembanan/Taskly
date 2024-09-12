@@ -5,26 +5,32 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getTasks, createTask, updateTask, deleteTask } from './api';
 import '../css/home.css';
 import profilepic from '../assets/profile.png';
+import quotes from './quote'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const Home = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const user = location.state?.user;
   const [tasks, setTasks] = useState([]);
+  const [quote, setQuote] = useState('');
+  const [date, setDate] = useState(new Date());
+
 
   console.log('User in Home:', user);
-  console.log('User Picture URL:', user?.picture);
 
   useEffect(() => {
-    console.log('User:', user); // Check if user object is available
+    console.log('User:', user); 
     if (user) {
+      setQuote(getRandomQuote());
       fetchTasks();
     }
-  }, [user]); // Dependency array includes 'user'
+  }, [user,navigate]); 
 
   const fetchTasks = async () => {
     try {
-      console.log('Fetching tasks for user ID:', user._id); // Debug log
+      console.log('Fetching tasks for user ID:', user._id);
       if (user._id) {
         const response = await getTasks(user._id);
         setTasks(response.data);
@@ -36,8 +42,6 @@ const Home = () => {
     }
   };
   
-  
-
   const handleAddTask = async (task) => {
     try {
       if (!user?._id) {
@@ -47,10 +51,10 @@ const Home = () => {
       const taskData = {
         title: task.title,
         content: task.content,
-        userId: user._id // Make sure this is correctly assigned
+        userId: user._id 
       };
   
-      console.log('Task Data:', taskData); // Check task data before sending
+      console.log('Task Data:', taskData); 
   
       const response = await createTask(taskData);
       setTasks([...tasks, response.data]);
@@ -59,9 +63,6 @@ const Home = () => {
     }
   };
   
-  
-
-
   const handleUpdateTask = async (id, updatedData) => {
     try {
       const response = await updateTask(id, updatedData);
@@ -84,6 +85,16 @@ const Home = () => {
     navigate('/');
   };
 
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  };
+
+  const onDateChange = (newDate) => {
+    setDate(newDate);
+  };
+
+
   return (
     <div className="home-container">
       <aside className="sidebar">
@@ -92,7 +103,20 @@ const Home = () => {
           alt="User profile" 
           className="user-image" 
         />
+
         <h2 className="user-name">{user?.name}</h2>
+
+        <div className="quote-section">
+          <p>{quote}</p>
+        </div>
+
+        <div className="calendar-section">
+          <Calendar
+            onChange={onDateChange}
+            value={date}
+          />
+        </div>
+
         <button className="sign-out-button" onClick={handleSignOut}>
           Sign Out
         </button>
